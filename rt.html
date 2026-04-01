@@ -1,0 +1,618 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RT Restaurant | Premium Dining</title>
+    <link rel="icon" type="image/jpg" href="OIP.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --whatsapp: #25D366;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* --- NAVIGATION LOGO (Top Left) --- */
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* The "RT" Symbol Style (Navigation) */
+        .nav-monogram {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: -2px; 
+            margin-right: 8px;
+            animation: softGlow 3s ease-in-out infinite alternate;
+        }
+
+        /* The "RESTAURANT" Text Style */
+        .nav-rest-name {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: #fff;
+            letter-spacing: 3px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .logo:hover .nav-rest-name {
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        @keyframes softGlow {
+            from {
+                text-shadow: 0 0 5px rgba(212, 175, 55, 0.2);
+                color: #d4af37; 
+            }
+            to {
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.4);
+                color: #fcf6ba; 
+            }
+        }
+        
+        nav ul { display: flex; list-style: none; align-items: center; }
+        nav ul li { margin-left: 35px; }
+        nav ul li a { 
+            text-decoration: none; color: #eee; font-size: 14px; 
+            font-weight: 600; text-transform: uppercase; transition: var(--transition);
+        }
+        nav ul li a:hover { color: var(--gold); }
+
+        /* Mobile Menu Toggle Icon */
+        .menu-toggle {
+            display: none;
+            color: var(--gold);
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* --- HERO SLIDESHOW SECTION --- */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: -1;
+        }
+        
+        .slide.active { opacity: 1; }
+        
+        .hero::after {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 0;
+        }
+
+        .hero-content { z-index: 2; position: relative; width: 100%; padding: 0 20px; }
+
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;900&display=swap');
+
+        /* --- THE LOGO ANIMATION & STYLE --- */
+        .hero-logo {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(60px, 12vw, 150px); 
+            font-weight: 900; 
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(
+                to right, 
+                #bf953f 0%, 
+                #fcf6ba 25%, 
+                #b38728 50%, 
+                #fbf5b7 75%, 
+                #aa771c 100%
+            );
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 4s linear infinite;
+        }
+
+        .hero-logo .monogram {
+            letter-spacing: -5px;  
+            margin-right: 20px;
+            display: inline-block;
+        }
+
+        .hero-logo .rest-name {
+            font-weight: 500;      
+            letter-spacing: 5px;   
+            font-size: 0.4em;      
+            display: block;        
+            margin-top: 10px;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        
+        .hero-content span { color: var(--gold); font-style: italic; }
+
+        /* --- ABOUT SECTION --- */
+        .about-section {
+            padding: 100px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #111;
+            gap: 50px;
+        }
+
+        .about-text { width: 50%; }
+        .about-text h2 { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 20px; }
+        .about-text span { color: var(--gold); }
+        .about-text p { color: #aaa; margin-bottom: 20px; font-size: 16px; }
+
+        .about-image {
+            width: 45%;
+            height: 400px;
+            background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            box-shadow: 20px 20px 0px rgba(212, 175, 55, 0.1);
+        }
+
+        /* --- MENU SECTION --- */
+        .menu-preview { padding: 100px 8%; text-align: center; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 30px; }
+        .section-title span { color: var(--gold); }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 30px;
+            padding: 10px;
+            justify-content: center; 
+        }
+
+        /* --- CARD STYLING --- */
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            overflow: hidden; 
+            transition: var(--transition);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            max-width: 380px; 
+            width: 100%;
+            margin: 0 auto; 
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .card.hide { display: none; } 
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card:hover { transform: translateY(-10px); border-color: var(--gold); }
+
+        .card img { 
+            width: 100%; 
+            height: 220px; 
+            object-fit: cover; 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 15px;
+        }
+
+        .card h3 { color: var(--gold); margin: 0 20px 5px; }
+        
+        .card p { margin: 0 20px; font-size: 14px; color: #ccc; }
+
+        .price { 
+            font-weight: bold; font-size: 20px; color: #fff; 
+            display: block; margin: 10px 20px; 
+        }
+
+        .card .btn-order { margin: 0 20px 20px; width: calc(100% - 40px); }
+        .btn-order {
+            display: inline-block;
+            width: 100%; padding: 12px;
+            background: transparent; border: 1px solid var(--whatsapp);
+            color: var(--whatsapp); text-align: center;
+            text-decoration: none; border-radius: 8px; font-weight: bold;
+            transition: 0.3s; margin-top: 10px;
+        }
+        .btn-order:hover { background: var(--whatsapp); color: #fff; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #050505; padding: 80px 8% 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-container {
+            display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;
+        }
+
+        .footer-col { flex: 1; min-width: 250px; }
+        .footer-col h3 { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 25px; }
+        
+        .contact-link {
+            display: flex; align-items: center; color: #ccc;
+            text-decoration: none; margin-bottom: 15px; transition: 0.3s;
+        }
+        .contact-link i { margin-right: 15px; color: var(--gold); width: 20px; }
+        .contact-link:hover { color: #fff; padding-left: 5px; }
+
+        .social-icons { margin-top: 20px; }
+        .social-icons a {
+            display: inline-flex; justify-content: center; align-items: center;
+            width: 40px; height: 40px; background: rgba(255,255,255,0.1);
+            color: #fff; border-radius: 50%; margin-right: 10px;
+            text-decoration: none; transition: 0.3s;
+        }
+        .social-icons a:hover { background: var(--gold); color: #000; }
+
+        .copyright {
+            text-align: center; margin-top: 60px; padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05); font-size: 14px; color: #666;
+        }
+
+        /* FLOATING WHATSAPP BUTTON */
+        .float-wa {
+            position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px;
+            background-color: var(--whatsapp); color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            z-index: 100; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.3s;
+        }
+        .float-wa:hover { transform: scale(1.1); }
+
+        /* --- MOBILE RESPONSIVENESS FIXES --- */
+        @media (max-width: 768px) {
+            /* Navbar adjustments */
+            nav { padding: 15px 5%; }
+            .menu-toggle { display: block; }
+            nav ul {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.95);
+                width: 100%;
+                text-align: center;
+                transition: 0.4s ease-in-out;
+                padding: 20px 0;
+                border-bottom: 1px solid var(--gold);
+            }
+            nav ul.active { left: 0; }
+            nav ul li { margin: 20px 0; }
+            nav ul li a { font-size: 18px; }
+
+            /* Hero adjustments */
+            .hero-logo { font-size: clamp(40px, 15vw, 70px); }
+            .hero-logo .monogram { margin-right: 10px; letter-spacing: -2px; }
+            .hero-logo .rest-name { letter-spacing: 2px; font-size: 0.3em; }
+            
+            /* Section layout and padding adjustments */
+            .about-section { flex-direction: column; padding: 60px 5%; text-align: center; }
+            .about-text, .about-image { width: 100%; }
+            .menu-preview { padding: 60px 5%; }
+            .grid { gap: 20px; }
+            
+            /* Footer adjustments */
+            footer { padding: 60px 5% 40px; text-align: center; }
+            .footer-container { flex-direction: column; align-items: center; }
+            .contact-link { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <span class="nav-monogram">RT</span>
+            <span class="nav-rest-name">RESTAURANT</span>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#contact" style="color:var(--gold);">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1920&q=80');"></div>
+
+        <div class="hero-content">
+            <div class="hero-content">
+            <p style="letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px;">Premium Taste</p>
+            
+            <h1 class="hero-logo">
+                <span class="monogram">RT</span>
+                <span class="rest-name">RESTAURANT</span>
+            </h1>
+
+        </div>
+            <a href="#menu" class="btn-order" style="background: var(--gold); color: black; border:none; width: auto; padding: 15px 40px; margin-top: 20px; display:inline-block;">View Menu</a>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="about-image"></div>
+        <div class="about-text">
+            <h2>Our <span>Story</span></h2>
+            <p>Welcome to RT Restaurant, where passion meets the plate. We believe that dining is not just about food, but about the experience. Located in the heart of the city, we bring you authentic flavors with a modern touch.</p>
+            <p>From our sizzling Karahis to our signature continental dishes, every meal is prepared with fresh, organic ingredients.</p>
+        </div>
+    </section>
+
+    <section class="menu-preview" id="menu">
+        <h2 class="section-title">Chef's <span>Menu</span></h2>
+        
+        <div class="menu-tabs">
+            <button class="tab-btn active" onclick="filterMenu('all')">All</button>
+            <button class="tab-btn" onclick="filterMenu('spicy')">Spicy</button>
+            <button class="tab-btn" onclick="filterMenu('sweets')">Sweets</button>
+            <button class="tab-btn" onclick="filterMenu('drinks')">Drinks</button>
+        </div>
+
+        <div class="grid" id="menu-grid">
+            <p style="text-align: center; width: 100%;">Loading Menu from Google Sheet...</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 25px;">
+                    <span class="nav-monogram">RT</span>
+                    <span class="nav-rest-name">RESTAURANT</span>
+                </div>
+                <p style="color: #aaa; font-size: 14px; margin-bottom: 20px;">
+                    Experience the finest dining with an atmosphere of luxury and taste.
+                </p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/rtrestaurant" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/923001234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <a href="tel:+923001234567" class="contact-link"><i class="fas fa-phone-alt"></i> +92 300 1234567</a>
+                <a href="mailto:info@rtrestaurant.com" class="contact-link"><i class="fas fa-envelope"></i> info@rtrestaurant.com</a>
+                <a href="https://instagram.com/rtrestaurant" class="contact-link" target="_blank"><i class="fab fa-instagram"></i> @rtrestaurant</a>
+            </div>
+
+            <div class="footer-col">
+                <h3>Location</h3>
+                <p style="color:#aaa; margin-bottom:15px;">Main Boulevard, Nawabshah, Pakistan</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3432.853072223049!2d68.3697!3d26.2483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDE0JzUzLjkiTiA2OMKwMjInMTEuMCJF!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" width="100%" height="150" style="border:0; border-radius: 10px; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <div class="copyright">© 2026 RT Restaurant. Designed to Impress.</div>
+    </footer>
+
+    <a href="https://wa.me/923001234567" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        // --- MOBILE MENU LOGIC ---
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const menuIcon = mobileMenu.querySelector('i');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // --- 1. SLIDESHOW LOGIC ---
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+
+        // --- 2. GOOGLE SHEET CONNECTION ---
+        const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQqCxind7uWv3U6BebKMo1P-tKlmU5XoA8-J_yCCdBYZVBydGHeSYy59VZ3iwYw1hOK_5hybvMSJfIf/pub?gid=0&single=true&output=csv';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch(sheetUrl)
+                .then(response => response.text())
+                .then(csvText => {
+                    const rows = csvToObjects(csvText);
+                    generateMenu(rows);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('menu-grid').innerHTML = '<p>Error loading menu.</p>';
+                });
+        });
+
+        function csvToObjects(csv) {
+            const lines = csv.split('\n');
+            const result = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i] || lines[i].trim() === '') continue;
+                
+                const currentline = lines[i].split(',');
+
+                if(currentline.length < 5) continue;
+
+                const obj = {
+                    category: currentline[0].trim().toLowerCase(),
+                    name: currentline[1].trim(),
+                    desc: currentline[2].trim(),
+                    price: currentline[3].trim(),
+                    image: currentline[4].trim()
+                };
+                result.push(obj);
+            }
+            return result;
+        }
+
+        // --- 3. THE UPDATED MENU GENERATOR ---
+        function generateMenu(items) {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = ''; 
+
+            const restaurantPhone = "923001234567"; 
+
+            if(items.length === 0) {
+                grid.innerHTML = '<p>No items found in Sheet.</p>';
+                return;
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = `card ${item.category}`;
+                
+                const message = `Hi RT Restaurant! I would like to order:%0A%0A*Item:* ${item.name}%0A*Price:* Rs. ${item.price}%0A*Category:* ${item.category}%0A%0APlease confirm my order.`;
+
+                const whatsappUrl = `https://wa.me/${restaurantPhone}?text=${message}`;
+                const imgUrl = item.image.startsWith('http') ? item.image : 'https://via.placeholder.com/400x300?text=No+Image';
+
+                card.innerHTML = `
+                    <img src="${imgUrl}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>${item.desc}</p>
+                    <span class="price">Rs. ${item.price}</span>
+                    <a href="${whatsappUrl}" class="btn-order" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                    </a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // --- 4. FILTER LOGIC ---
+        function filterMenu(category) {
+            let buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase() === category || (category === 'all' && btn.innerText === 'All')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            let items = document.querySelectorAll('.card');
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'flex'; 
+                } else {
+                    if (item.classList.contains(category)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
